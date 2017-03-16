@@ -1,0 +1,13 @@
+Number 1
+1 Jan 1900 was a Monday.
+Thirty days has September, April, June and November.
+All the rest have Thirty-one.
+Saving February alone which has twenty-eight rain or shine.
+And on leap years twenty-nine.
+A leap year occurs on any year divisible by 4, but not on a century unless it is divisible by 400.
+How many Sundays fell on the 1st of the month from 1st of Jan 1901 to 31st of Dec 2000?
+
+Number 2
+The # 197 is called a circular prime because all rotations of its digits 197, 971 and 719 are themselves prime.
+There are 13 such primes below (100): [2, 3, 5, 11, 13, 17, 31, 37, 71, 73, 79, 97] .
+How many circular primes are there below 1 million?

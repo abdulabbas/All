@@ -1,0 +1,137 @@
+// Main.cpp
+#include "Deck.h"
+#include "Card.h"
+
+#include <iostream>
+
+int main() {
+  Deck d;
+ Card c = d.getRandomCard();
+ std::cout << c.toString() << std::endl;
+}
+// Deck.h
+#ifndef DECK_H
+#define DECK_H
+
+#include "Card.h"
+
+class Deck {
+private:
+  Card cards[52];
+
+public:
+ Deck();
+ Card getRandomCard();
+};
+#endif
+// Deck.cpp
+#include "Deck.h"
+#include "Card.h"
+#include <ctime>
+#include <cstdlib>
+
+Deck::Deck() {
+  // Create 52 cards
+ int i = 0;
+ for (int s = 0; s < 4; s++) {
+  for (int r = 0; r < 13; r++) {
+   Card c(ranks[r], suits[s]);
+   this->cards[i];
+   i++;
+  }
+ }
+}
+
+Card Deck::getRandomCard() {
+ // rand method gets a random card.
+ srand(time(NULL));
+ int suitRand = rand() % 4; // mod by 4 suits.
+ int rankRand = rand() % 13; // mod by 13 for rank
+ Card c(suits[suitRand], ranks[rankRand]);
+ return c;
+}
+#ifndef CARD_H
+#define CARD_H
+#include <string>
+
+static const char suits[] = { 'H', 'D', 'C', 'S' };
+static const char ranks[] = { 'A', '2', '3', '4', '5', '6', '7', '8', '9', 'X', 'J', 'Q', 'K' };
+
+class Card {
+private:
+  char rank;
+ char suit;
+
+public:
+ Card();
+ Card(char rank, char suit);
+ //void setRank(char rankValue);
+ //char getRank();
+ //void setSuit(char suitValue);
+ //char getSuit();
+ std::string toString();
+};
+
+#endif
+
+// Card.cpp
+#include "Card.h"
+
+
+/*
+*/
+Card::Card() {
+
+}
+
+Card::Card(char rank, char suit) {
+  this->rank = rank;
+ this->suit = suit;
+}
+
+/*
+ Converts a card to a string for display.
+*/
+std::string Card::toString() {
+ return strcat(this->rank, this->suit);
+}
+Some additional notes from out-of-class help:
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+#include <string>
+
+class Account {
+private:
+  std::string firstName;
+ std::string lastName;
+public:
+ // really just prototypes for my methods.
+ void setFirstName(std::string fname);
+ std::string getFirstName();
+ void setLastName(std::string lname);
+ std::string getLastName();
+};
+
+#endif
+#include <string>
+#include "Account.h"
+
+// Implementation of my prototypes.
+void Account::setFirstName(std::string fname) {
+
+}
+
+std::string Account::getFirstName() {
+
+}
+
+void setLastName(std::string lname);
+std::string getLastName();
+
+#include "Account.h"
+
+class SavingsAccount : public Account {
+  // Savings account IS-A account with the following additions:
+private:
+
+};

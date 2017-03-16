@@ -1,0 +1,565 @@
+Southern California Regional of the ACM International Collegiate Programming Contest
+
+PREVIOUS CONTEST PROBLEMS
+
+
+Cribbage Hand Scoring
+
+Cribbage is a two-to-four player card game invented by Sir John Suckling, a 17th century English knight, poet, playwright, and gambler. As a gentlemanly game of British origin, cribbage is steeped in tradition and complicated rules. In a traditional two-player game, each player is dealt six cards. The players discard two cards each to form the "crib," which is a four-card hand formed by the combination of discards. Each player retains a four-card hand. After discarding, the non-dealer cuts the remaining cards in the deck, and thedealer exposes the top card from the remaining cut deck to become the start card. Scoring has two distinct phases: the play, sometimes known as pegging, and the show, often known as counting. After the play, the non-dealer counts his hand, then the dealer counts his hand, and finally the dealer counts the crib, taking any points in the crib as his own.
+
+Your team is to write a program to score hands during the show. During the show, the start card becomes the fifth card for each player's hand and the crib. Each five-card hand is scored according to the following criteria:
+
+· The cards are ranked 1 (Ace), 2-10, Jack, Queen, King. Ace is always low.
+
+· Each unique pair scores two points. As an example, if a player or the crib holds the 8 of Hearts (8H), 8 of Spades (8S), 8 of Diamonds (8D), and 2 of Clubs (2C) with the start card being the Ace of Spades (AS), there are three unique pairs: 8H-8S, 8H-8D, and 8S-8D, producing six points.
+
+· Each unique combination of cards summing to 15 scores two points. Face cards (Jack, Queen, and King) have weights of 10, and all other cards have weights matching their pip counts. For example, a hand or crib containg the Ten of Hearts (TH), 6 of Diamonds (6D), 4 of Clubs (4C), and Ace of Hearts (AH) with the Jack of Clubs (JC) as the start card has two unique sets of cards adding up to 15: TH-4C-AH and JC-4C-AH, producing four points.
+
+· A four-card flush scores four points, unless in the crib. A four-card flush occurs when all of the cards in a player's hand are the same suit and the start card is a different suit. In the crib, a four-card flush scores no points.
+
+· A five-card flush scores five points. A five-card flush occurs when all of the cards in a player's hand or crib and the start card are the same suit.
+
+· Each unique run of three or more cards scores one point for each card in the run. A run is a sequence of three or more cards with consecutive rank. Only the longest runs possible in a hand are counted--if a four card run exists, the two three-card runs that can be made with the same cards are ignored. A hand or crib containing the Ace of Diamonds (AD), Jack of Spades (JS), Queen of Clubs (QC), and Queen of Hearts (QH) with a start card of King of Hearts (KH) has two unique runs of three cards: JS-QC-KH and JS-QH-KH, producing six points from the runs. Note: the pair of Queens adds an additional two points to the overall score for the hand.
+
+· Nobs scores one point. Nobs is when one of the cards in the four-card hand held by a player or crib is a Jack, and the suit of that Jack matches the suit of the start card.
+
+Input to the program is a series of cribbage hands to score, one hand per line. Each hand begins with a single character. "h" indicates that the hand is a player's hand, whereas "c" indicates the crib. A single space follows the "h" or "c", followed by five card specifications, each separated by a single space. The first four cards are the player's hand, in no special order; the fifth card is the start card. Each card is described by two characters: the first character is the rank, according to the table below, and the second character is the suit: "H" for Hearts, "D" for Diamonds, "S" for Spades, and "C" for Clubs.
+1 (Ace) 	A
+2 (Deuce) 	2
+3 	3
+4 	4
+5 	5
+6 	6
+7 	7
+8 	8
+9 	9
+10 	T
+Jack 	J
+Queen 	Q
+King 	K
+
+For each line of input there should be one line of output, starting with the word "Hand" or "Crib" corresponding to "h" or "c" from the input, a single space, the five-card hand as it appears in the input, a single space, an equal sign, a space, then the score for the hand, right justified in a two-character field.
+
+ 
+
+Sample Input
+
+h 8H 8S 8D 2C AH
+h TH 6D 4C AH JC
+c AD JS QC QH KH
+h 5S 6S 7S 8S 9C
+
+ 
+
+Sample Output
+
+Hand 8H 8S 8D 2C AH =  6
+Hand TH 6D 4C AH JC =  4
+Crib AD JS QC QH KH =  8
+Hand 5S 6S 7S 8S 9C = 13
+
+
+Copyright © 1998 ACM Southern California Regional Programming Contest 
+
+
+Revolutionary Calendar
+
+The secret Swamp County Revolutionary Council subcommittee on The Calendar has finally, after more than 20 years, agreed on the calendar system which will be used after the revolution. Your team's job is to prepare the Council-blessed subroutine to calculate the number of days between any two dates in the new system. Rather than have negative or Before Revolution dates, the old Gregorian calendar will remain in use for pre-revolutionary dates. Since the Revolution has not yet occurred, and the day it does will be the first day of the new year, you will not have to deal with any old dates for now.
+
+The year has 13 months of 28 days, a 1 day month for the end of year holiday, and an extra 1 day leap year month added between the end of year month and the first day of the next year when necessary.
+
+The 28 day months, in order, are: Alligator, Bog, Crayfish, Damp, Eel, Fen, Gumbo, Hurricane, Inundation, Jaguar, Kudzu, Lake, and Marsh. The days of these months are numbered 0 through 27. The day and month are cycled simultaneously, similar to the Mayan tzolkin calendar. The first day of the year is 0-Alligator, followed by 1-Bog, 2-Crayfish, ..., 12-Marsh, 13-Alligator, and so on. Since there are 13 of these months, and 13 is prime, all combinations of days and months are used in 13 · 28 = 364 days.
+
+The end of year month, Newt, has only 1 day: 0.
+
+There are 683 leap years in a 2820 year cycle, somewhat like the modern Persian calendar. Year y will be a leap year if ((683 · y) mod 2820) < 683. Year 0 will be a leap year, as will years 5, 9, 13, 17, and so on. There are 3 or 4 standard years between each leap year. Using this method for leap years will result in an error of 1 day in 2.39 million years. While a Y2.39M committee is being formed to address this problem, just ignore it for now.
+
+The leap year month is Overflow, the day number is in the range 0-682 with the first leap year in a 2820 year cycle being 0-Overflow and the last being 682-Overflow. For example, 0-Overflow-0, 1-Overflow-5, 2-Overflow-9, 0-Overflow-2820 are valid dates, 3-Overflow-2829 is not.
+
+The input consists of a series of lines ended by end-of-file. Each line consists of a pair of dates in the form day-month-year, with day being at most 3 decimal digits, month being an alphabetic string of at most 10 characters, and year being in the range 0-1999999. The dates of a pair will be separated by one or more spaces or tabs. Accept month if it is any unique initial substring of a valid month name ignoring case.
+
+For each test case print the date difference between the dates of the pair. The date difference is the number of days that need to be added to the earlier date to reach the later date. The date difference between today and today is 0, between today and tomorrow is 1.
+
+If either date of the pair is illegal print the official Revolutionary Council Provisional Error Message: "eh?".
+
+Print the output for each test case on a separate line starting in the first column.
+
+ 
+
+Sample Input
+
+0-Alli-0 2-Overflow-2829
+0-alli-0 3-Over-2829
+0-a-0 0-newt-1999999
+0-alligator-1997 28-bog-2000
+16-jaguar-1054284 16-gum-19973
+23-damp-394304 0-newt-590355
+43-over-1948798 20-mar-1058036
+
+ 
+
+Sample Output
+
+1033635
+eh?
+730484396
+eh?
+377773883
+71606355
+325343964
+
+ 
+
+ 
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+
+
+Telephone Directory Alphabetization
+
+Based on its success in contracting previous software development efforts to programming contest teams, the String & Tin Can (S&TC) Telephone Company has now decided to produce its telephone directories internally. Your team has been hired to develop a program that will take subscriber names and telephone numbers and alphabetize them into a list for printing.
+
+Telephone directories have traditionally used special conventions for alphabetization, and S&TC wants your program to use these conventions. Each subscriber listing consists of one or more "words,'' where each word is separated from the others by spaces or non-alphanumeric characters. Directories only use the letters A through Z for sorting, ignoring case. Therefore, names that include words comprised of digits or capital letters require special processing.
+
+A listing may contain a word that is a decimal number. Listings with numbers in them appear in the alphabetized list in the same location they would if the numbers were spelled out in English. For example, "50 Star Company'' might appear just before "Fifty Star Vending'' in the list. Numbers are permitted to be in the range 0-999,999,999. Letters and digits will not appear together in the same word.
+
+All special (non-alphanumeric) characters are to be treated as spaces. "Penny-Wise Corporation'' would appear after "Penny Saver,'' but before "Pennypinching Company.'' Multiple spaces or non-alphanumeric characters are treated as a single space when sorting. Special characters will not appear at the beginning of a listing.
+
+Words that are comprised of all capital letters are assumed to be initials or acronyms, and are treated as if spaces appeared between each letter. Hence, "KAT Shop'' would appear at the beginning of the K listings, before "K-B Enterprises'' and "K Warehouse''.
+
+Input to your program will be a list of subscribers, one per line. The first seven digits will be the telephone number, and the rest of the line will be the name of the subscriber as it is to appear in the telephone directory. Your program is to alphabetically sort the subscriber names according to the rules above and print the listing in order. Each line should contain the subscriber name as it appeared in the input in the first 52 positions, left justified and space filled, followed by the seven digit telephone number (including a space between the third and fourth digits) in columns 56 through 63. The telephone number is to be immediately followed by the end of line.
+
+Your program need not handle more than 1,000 subscribers-none of the towns S&TC serves in Swamp County have populations larger than that.
+
+ 
+
+Sample Input
+
+8936251KAT Shop
+7362812Penny Saver, Inc.
+7251887Kate's Company
+8372974Fine Foods
+9273664Five Star Vending
+3523984K-B Enterprises
+723621899 Cents Only Store
+
+ 
+
+Sample Output
+Fine Foods 	837 2974
+Five Star Vending 	927 3664
+KAT Shop 	893 6251
+K-B Enterprises 	352 3984
+Kate's Company 	725 1887
+99 Cents Only Store 	723 6218
+Penny Saver, Inc. 	736 2812
+
+ 
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+
+
+
+Factorial Factors
+
+The factorial function, n! = 1 · 2 · ... · n, has many interesting properties. In this problem, we want to determine the maximum number of integer terms (excluding 1) that can be used to express n!. For example:
+
+8! = 1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 = 2 · 3 · 2 · 2 · 5 · 3 · 2 · 7 · 2 · 2 · 2 = 27 · 32 · 5 · 7
+
+By inspection, it is clear that the maximum number of terms (excluding 1) that can be multiplied together to produce 8! is 11.
+
+The input for your program consists of a series of test cases on separate lines, ended by end-of-file. Each line contains one number, n, 2 <= n <= 1000000.
+
+For each test case, print the maximum number of factors (excluding 1) that can be multiplied together to produce n!. Put the output from each test case on a separate line, starting in the first column.
+
+ 
+
+Sample Input
+
+2
+1000000
+1996
+5
+8
+123456
+
+ 
+
+Sample Output
+
+ 
+
+1
+3626619
+5957
+5
+11
+426566
+
+ 
+Copyright © 1996 ACM Southern California Regional Programming Contest 
+
+Named Extension Dialing
+
+The marketing research group of the S&TC (String & Tin Can) telephone company recently concluded its analysis of leading-edge services that could be developed for its CENTREX (business user) customers. The analysis showed that "Named Extension Dialing'' (NED) has the highest profit potential. To maximize profit by minimizing non-recurring expenses, S&TC has contracted your team to develop a module for the automated attendant system that implements NED.
+
+Currently when a call is placed to a business' primary number, the caller is greeted with the pleasant, and almost human, message "You have reached XYZ Corporation. If you know your party's extension, please dial it now, or stay on the line for an operator.'' NED will allow the sentence, "If you know your party's name, dial the first letter of the first name followed by the first letters of the last name of your party now,'' to be added to the message.
+
+Input to your software module will be a directory of names and extensions, one per line, followed by lines containing arbitrary numeric strings dialed by people calling XYZ Corporation. Each directory entry consists of a first name, one space, a last name, one space, and a 4-digit phone extension. Names can contain any combination of up to twenty lower and upper case letters. No input line will exceed 80 characters.
+
+For each dialed number, the program is to output, on one line starting in the first column, the list of extensions to which the number could be referring. If the dialed number exactly matches an extension, output the extension; otherwise, output the list of extensions that correspond with names that match the dialed number. Multiple extensions that match a dialed number are to be separated from each other by single spaces. The dialed number must match the characters in the name exactly. (Homophonic matching of names was already completed in an earlier contest.) If the input fails to match any names or extensions, output 0.
+
+ 
+
+
+1
+	
+
+ABC
+2
+	
+
+DEF
+3
+
+GHI
+4
+	
+
+JKL
+5
+	
+
+MNO
+6
+
+PQRS
+7
+	
+
+TUV
+8
+	
+
+WXYZ
+9
+
+
+*
+	
+
+
+0
+	
+
+
+#
+
+ 
+
+ 
+
+Sample Input
+
+Barry Charles 4384
+John Smith 2315
+Susan Small 5764
+Alexis Baxter 4652
+Kim Rohde 6678
+22
+5764
+2345
+22298
+
+ 
+
+Sample Output
+
+4384 4652
+5764
+0
+4652
+
+
+Copyright © 1996 ACM Southern California Regional Programming Contest 
+
+
+
+ Fifth Bank of Swamp County
+
+In response to overwhelming customer complaints, the Fifth Bank of Swamp County has finally decided to produce a listing of cleared checks at the end of each customer's checking account statement. The current statements list only the transaction history, sorted by date, which includes all deposits, withdrawals and fee assessments in addition to cleared checks. The code to generate the current statements was written by programmers with degrees in math; these programmers have for years argued that all ''necessary and sufficient'' information is contained in the transaction history, and any further output is unnecessary and wasteful. In order to minimize the cost of the software change, the bank has laid off the entire programming staff and has chosen instead to outsource the job to part-time student labor as a weekend project.
+
+The cleared check summary will list all checks which cleared the bank during the statement reporting period. The summary will be sorted in ascending order by check number, and will report the dollar amount of the check and date the check cleared. To improve the usefulness of the list, any out-of-sequence check numbers should have an asterisk (*) printed next to them. An out-of-sequence check number is one which, when sorted, does not immediately succeed the previously cleared check number.
+
+The input to the check summary program consists of a check transaction history, sorted in ascending order by date. There will be one input line for each check, consisting of the transaction date in yy/mm/dd format, white space, the check number (an integer between 1 and 9999), white space, and the amount of the check in dollars and cents.
+
+The output should be displayed in three columns, with all checks sorted in column order (see the sample output). Do not print any more rows than necessary, and always fill the middle column before spilling over to the last column. Each column should be separated from the others by three spaces and have the following format:
+
+
+nnnn* dddddd.cc yy/mm/dd
+
+where ''nnnn'' is the check number with leading zeroes suppressed, ''*'' is the optional out-of-sequence indicator (use a space if in sequence), and ''dddddd.cc'' is the dollar and cent value of the check, with leading zeroes suppressed. If the check is for less than one dollar, print a zero before the decimal point. All checks for $1 million or more require special processing and are not handled through the bank's normal check clearing process; such checks will not appear on these statements. There is no need to paginate the output.
+Sample Input
+
+93/10/01 998  .65
+93/10/01 999 123.89
+93/10/05 996 29.99
+93/10/06 993 116.52
+93/10/12 995 418.00
+93/10/15 1001 15045.00
+93/10/27 1000 840.85
+
+Sample Output
+
+ 993     116.52 93/10/06    998*      0.65 93/10/01   1001   15045.00 93/10/15
+ 995*    418.00 93/10/12    999     123.89 93/10/01
+ 996      29.99 93/10/05   1000     840.85 93/10/27
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+
+
+
+ FlatLand Piano Movers
+
+FlatLand Piano Movers, as part of their Total Quality Management project, has decided to focus on the job estimation process. Part of this process involves walking the proposed paths that are to be used to move a piano to see if it will fit through corridors and around corners. Now this is harder than it might seem, since FlatLand is a 2-dimensional world.
+
+FlatLand pianos are rectangles of various sizes. FlatLand building codes require all turns in corridors to be right angle turns and prohibit ``T'' intersections. All dimensions are in furlongs. You can assume that each portion of a corridor is long enough so that other corners or doors into rooms don't have any effect on getting around a turn. You can also assume that the piano is narrower than the width of any corridor. Note that the piano actually has to turn in the corner, since it can only be pushed or pulled on one of its shorter sides (there are no square pianos).
+
+Your team's job is to write a program for a palmtop computer that will determine if a given piano will fit around a corner in a corridor.
+
+The input consists of a series of lines up to 80 columns in width followed by the end-of-file. Each line consists of a series of number pairs. The numbers of a pair are separated by a comma and the pairs are separated by at least one space. The first pair is the size of a piano, and the remaining pairs are the widths of corridors on each side of the turns. Consider the example:
+
+600,200 300,500 837,500 350,350
+
+This is a 600 by 200 piano. The first turn is from a 300 furlong wide corridor through a right angle turn into a 500 furlong wide corridor. The next turn is from an 837 furlong wide corridor into one 500 furlongs wide. The last turn is from a 350 furlong wide corridor into another 350 furlong wide corridor.
+
+For each piano, your program is to produce a yes-or-no answer for each turn. If the piano will fit around the turn, print ``Y''; if not, print ``N''. The results for each piano should be printed on a separate line.
+
+Sample Input
+
+600,200   300,500   837,500  350,350 
+137,1200 600,500 600,400
+
+Sample Output
+
+YYN
+YN
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+
+
+
+ Swamp County Roofs
+
+The Swamp County Environmental Office is concerned about the number of structures in the county. They have a theory that all the rain water landing on roofs of buildings, parking lots, roads, and highways is going down the sewage system instead of draining to the ecologically sensitive and historically important swamp land the county is famous for.
+
+Your team has been hired to do the analysis of rain water captured by building roofs. The Planning Commission, which processes all building permits, and hence knows the plans of every structure in the county, will provide the data. Their database contains a set of measurements for the roofs of every building on every lot in the county.
+
+The Engineering staff of the Planning Commission has determined that all the roofs in the county can be represented by one or more quadrilaterals. Each quadrilateral has the following characteristics:
+
+length of baseline, in feet;
+
+length of ridgeline, in feet;
+
+distance between baseline and ridgeline, in feet;
+
+and inclination of the roof segment, in degrees.
+
+The baseline is always parallel to the ridgeline. A roof segment is always flat, but may be inclined. The inclination of the segment occurs along the baseline or ridgeline axis. A roof segment that is inclined 90 degrees is a wall that is assumed to have negligible thickness, and hence gathers no rain---such a segment will not appear in the data. Assume that the buildings are on level land, and that no roof segment overlaps any other. A roof segment may have either a baseline or ridgeline length of zero (such a segment is actually a triangle). A lot may contain one or more buildings, but your program need only compute the area covered by roofs on a lot-by-lot basis.
+
+Each lot is represented by a series of numbers separated from each other by white space and/or new-lines. The lot size, in square feet, is followed by a list of roof segments. Each roof segment will consist of the length of the baseline, the length of the ridgeline, the distance between the baseline and the ridgeline, and the inclination. Each lot description including the last will end with a blank line.
+
+For each lot compute and print the following statistics: the total roof surface area of buildings in square feet, the total floor space covered by roofs in square feet, and the percentage of rain intercepted by roofs. Print these values in labeled columns, one lot per line, with two digits after the decimal point. Print percent signs after the percentage of rain figures.
+
+At the end of the run compute and print the following statistics: the total roof surface area of all roofs in the county, the total floor space covered by roofs in the county, the overall percentage of rain intercepted by roofs, the average roof surface area on a lot, and the average floor space covered by roofs on a lot. Skip a line after the per-lot listing and print these values on separate lines with appropriate labels. Print each value with two digits after the decimal point. Print a percent sign after the overall percentage of rain value. Use a report format similar to that of the sample output below.
+
+One of the reasons Swamp County has remained so is the relative lack of wind in the county---you may therefore assume that all rain falls vertically.
+
+Sample Input
+
+100 10 10 10 60
+10 10 10 60
+
+200 5 10.5 5 30  10 10 7.5 45
+
+Sample Output
+
+Roof Area     Floor Area     % Covered
+---------     ----------     ---------
+   200.00         100.00       100.00%
+   113.75          86.59        43.30%
+ 
+Total surface area of roofs      313.75
+Total area covered by roofs      186.59
+Percentage of total area covered by roofs   62.20%
+Average roof surface area per lot          156.88
+Average floor space covered per lot         93.30
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+
+
+
+ Word Transformation
+
+A common word puzzle found in many newspapers and magazines is the word transformation. By taking a starting word and successively altering a single letter to make a new word, one can build a sequence of words which changes the original word to a given end word. For instance, the word ``spice'' can be transformed in four steps to the word ``stock'' according to the following sequence: spice, slice, slick, stick, stock. Each successive word differs from the previous word in only a single character position while the word length remains the same.
+
+Given a dictionary of words from which to make transformations, plus a list of starting and ending words, your team is to write a program to determine the number of steps in the shortest possible transformation.
+
+The input will be a single file in two sections. The first section will be the dictionary of available words with one word per line, terminated by a line containing an asterisk (*) rather than a word. There can be up to 200 words in the dictionary; all words will be alphabetic and in lower case, and no word will be longer than ten characters. Words can appear in the dictionary in any order.
+
+Following the dictionary are pairs of words, one pair per line, with the words in the pair separated by a single space. These pairs represent the starting and ending words in a transformation. The pairs are terminated by the end-of-file. All pairs are guaranteed to have a transformation using the dictionary given. The starting and ending words will appear in the dictionary.
+
+The output should contain one line per word pair, and must include the starting word, the ending word, and the number of steps in the shortest possible transformation, separated by single spaces.
+
+(For those people who listen to National Public Radio (NPR), the Sunday morning broadcast Weekend Edition, Sunday usually has a word puzzle for the listening audience. Occasionally the puzzle is a transformation. NPR allows the submission of puzzle answers via e-mail, to the address wesun@npr.org. You can use this code to generate solutions to the transformation puzzles and possibly get a chance to be on the air for the live puzzle round.)
+
+Sample Input
+
+dip
+lip
+mad
+map
+maple
+may
+pad
+pip
+pod
+pop
+sap
+sip
+slice
+slick
+spice
+stick
+stock
+*
+spice stock
+may pod
+
+Sample Output
+
+spice stock 4
+may pod 3
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+
+
+
+
+ Swamp County Supervisors
+
+The smell of rebellion is rising over Swamp County. The county is geographically split into various bogs, each represented by a supervisor on the Board of Supervisors. Since the bogs have varying populations, each supervisor has votes in proportion to the total population of the county, with a majority of the total votes needed for an ordinance to pass. The smaller bogs feel that they have no say on the Board because, in fact, the votes of the largest bogs completely determine the outcome of a vote. The smaller bogs might as well have zero votes.
+
+Your team's job is to write some software to aid in finding a fairer voting plan. The Board has agreed to consider a charter amendment that would make the number of votes needed to pass an ordinance a total other than that needed for a simple majority. Given the number of votes each bog holds, and the number of votes necessary to win (which could be more or less than a majority of the total votes), your program is to calculate the Banzhaf power index for each bog.
+
+Given the set of all possible votes, the Banzhaf power index for a bog is the number of times it could change the outcome of the vote on an ordinance from failure to passage.
+
+Input to your program consists of a series of lines of at most 80 characters. Each line consists of a series of numbers separated from each other by at least one space. The first number in a line is the minimum number of votes needed for passage of an ordinance. The rest of the numbers are the votes held by each bog. (For example, in the first line of the sample input below, the number of votes needed to pass an ordinance is 17. There are six bogs, with votes of 1, 7, 3, 12, 9, and 1 respectively.)
+
+For each case represented by an input line, your program is to print the power index of each bog. Output for each case should appear on a separate line, starting in the first column, with each power index separated from the others by single spaces. The order of the power indexes on each line must correspond to the input order of the votes for each bog.
+
+Swamp County will never be divided into more than 27 bogs--there's a limit to the number of lunches the lobbyists will buy.
+
+Sample Input
+
+
+17 1 7 3 12 9 1
+
+2000 214 306 298 274 270 261 246 404 241 240 240 238 224 333 210
+
+12 1 7 3 12 9 1
+
+2200 214 306 298 274 270 261 246 404 241 240 240 238 224 333 210
+
+ 
+ Sample Output
+
+
+
+2 14 2 18 14 2 
+
+2666 3934 3806 3474 3418 3218 3094 4734 3022 3006 3006 2978 2798 4402 2622 
+
+1 5 5 19 11 1 
+
+2453 3593 3493 3183 3137 3051 2841 4817 2777 2763 2763 2741 2527 4035 2395 
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest
+
+
+
+ Trial of the Millennium
+
+In what is becoming known as the "trial of the millennium," the Swamp County District Court is handling the highest profile case ever to reach the county court system. Learning from the experience of people involved in the "trial of the century," the Swamp County judiciary decided to adopt a few new rules to avoid gridlock in court proceedings. Among the new rules is a cap on the total amount of time each side is allowed to present its case.
+
+Each side will be allowed 8 hours for opening arguments, 240 hours for evidence presentations, and 16 hours for closing arguments. With this ground rule set, the court hopes to be able to bring the case to the jury in less than five months. While this rule hopefully will help to ensure a speedier trial, it presents a huge challenge to both the prosecution and the defense teams. Both teams must figure out how to best utilize their allocated time slots by presenting the most convincing and comprehensible evidence to the jurors.
+
+Your team has been contracted by the Swamp County District Attorney's Office to develop a decision support system to help the prosecution team formulate its strategies in selecting what material from its pool of evidence to present. Since the system may prove to be useful for future trials that have presentation time limits imposed, the D. A.'s Office has requested that you make the system flexible enough to handle other cases.
+
+The decision support system will select the material based on the score that the prosecution team assigns to each piece of evidence and the time cost associated with presenting it to the jury. The more useful the piece of evidence is, the higher its score. The prosecution team therefore has to come up with a set of evidence with the highest aggregate score.
+
+Input to the decision support system consists of the total allowed time for evidence presentation on the first line followed by entries for all the evidence that the prosecutor has. Each line presents one piece of evidence, with the first field showing its score, the second field indicating the estimated amount of time for its presentation, and the third field containing its general description. Fields are separated from each other by spaces, and the third field may contain embedded spaces.
+
+The score is based on a 1--10 integer scale while the time cost is expressed in full hours. In any given trial, the total amount of time allowed for evidence presentation shall not exceed 480 hours for each side. The total number of evidence items shall be less than or equal to 100, and the length of the evidence description shall be no greater than 68 characters. Evidence items may appear in the list in any order.
+
+Output will be a list of evidence to be presented along with the cost and benefit each of them brings, the aggregate score, and the total time for their presentation. Label the columns and the totals, following the format of the sample output below. If no evidence can be presented in the time allowed, the program should print this single line message: \ "There is not enough time to present any evidence. Drop the charges."
+
+Sample Input
+
+240
+5 4 Inspector supervising evidence collection at the crime scene
+3 4 Crime scene photos
+4 8 411 operator recording
+3 8 Officer who arrested defendant in a previous incident
+2 8 Victim's neighbor 2
+1 8 Victim's neighbor 3
+6 40 The victim's cousin
+8 48 The defendant's current housemate
+10 60 Coroner's report
+5 16 SCSD Crime Lab technician 1
+4 16 Taxi cab driver
+2 16 SCSD Crime Lab technician 2
+1 16 The defendant's personal trainer
+5 24 Officer responsible for making the arrest
+3 24 Victim's neighbor 1
+2 24 The victim's supervisor at work
+1 24 Pizza delivery person
+3 1 A discarded plastic fork at the crime scene
+5 32 The victim's brother
+7 40 The victim's personal physician
+1 1 An email the victim sent to his cousin the week before the incident
+2 2 Bloody sock
+6 64 Blood analysis results by chief criminalist of the SCSD Crime Lab
+
+Sample Output
+
+Score  Time  Description
+-----  ----  -----------
+  3      1   A discarded plastic fork at the crime scene
+  1      1   An email the victim sent to his cousin the week before the incident
+  2      2   Bloody sock
+  5      4   Inspector supervising evidence collection at the crime scene
+  3      4   Crime scene photos
+  4      8   411 operator recording
+  3      8   Officer who arrested defendant in a previous incident
+  2      8   Victim's neighbor 2
+  5     16   SCSD Crime Lab technician 1
+  4     16   Taxi cab driver
+  5     24   Officer responsible for making the arrest
+  7     40   The victim's personal physician
+  8     48   The defendant's current housemate
+ 10     60   Coroner's report
+
+Total score: 62 points
+ Total time: 240 hours
+
+
+Copyright © 1995 ACM Southern California Regional Programming Contest 
+

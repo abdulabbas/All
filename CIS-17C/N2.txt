@@ -1,0 +1,184 @@
+Lab 1: Classes
+Introduction:
+The purpose of this lab is to show students how to create classes and objects from classes.
+
+Problem:
+Create a class called Invoice that a hardware store might use to represent an invoice for an item sold at the store. 
+An Invoice should include four data members
+a part number ( type string), 
+a part description ( type string), 
+a quantity of the item being purchased ( type int) 
+and a price per item ( type int). [ Note: In subsequent chapters, we’ll use numbers that contain decimal points ( e. g., 2.75)— called floating- point values— to represent dollar amounts.] 
+Your class should have a constructor that initializes the four data members. A constructor that receives multiple arguments is defined with the form: 
+
+ClassName( TypeName1 parameterName1, TypeName2 parameterName2, ... ) 
+Provide a set and a get function for each data member. In addition, provide a member function named getInvoiceAmount that calculates the invoice amount ( i. e., multiplies the quantity by the price per item), then returns the amount as an int value. If the quantity is not positive, it should be set to 0. If the price per item is not positive, it should be set to 0. 
+
+Write a test harness (program) that demonstrates class Invoice’s capabilities.
+Turn in your lab into the link on the right (password is cis17c)
+
+Send files to cis17c
+Upload your assignments to professor O'Connor
+dropitto.me
+// main.cpp
+#include "Dog.h"
+#include <iostream>
+
+int main() {
+  // Deferred construction.
+ // Create the name BEFORE the dog exists.
+ Dog* rover;
+
+ // After getting some input.
+ std::string breed = "Great Dane";
+ rover = new Dog(breed);
+ //Dog fido("Great Dane");
+
+
+ // d.breed = "Whatever";
+
+ // Getter / Accessors
+ // std::string dog::getBreed();
+ // Returns a string because I asked it to retreive the breed.
+ // std::cout << d.breed;
+
+ // Mutator / Setter
+ // void dog::setBreed(std::string breedToSet);
+ // d.breed = "Great Dane";
+}
+// dog.h
+#ifndef DOG_H
+#define DOG_H
+
+#include <string>
+class Dog {
+private:
+  std::string breed;
+public:
+ std::string getBreed();
+ void setBreed(std::string breed);
+ // Dog();
+ Dog(std::string breed);
+ // Dog(std::string name);
+ // Dog(int x);
+};
+#endif
+// dog.cpp
+#include "Dog.h"
+#include "Dog.h"
+
+std::string Dog::getBreed() {
+  return this->breed;
+}
+
+void Dog::setBreed(std::string pBreed) {
+ this->breed = pBreed;
+}
+
+Dog::Dog() {
+
+}
+
+Dog::Dog(std::string breed) {
+ this->setBreed(breed);
+}
+
+
+
+
+	
+Lab 2: Collections
+Introduction
+Data structures can be broadly categorized in two ways: Records and Collections.
+Records represent a single instance of a class - what one might think of as an object - while Collections represent some grouping of items (this could consist of primitives such as Integer, Records, or even other collections in a collection-ception kind of way).
+In this lab, you'll create a record in the form of a class, as well as a collection of those records.
+Procedure:
+In this lab you'll use the concept of a deck of playing cards to distinguish between Records and Collections.
+Create a new project called "Lab2_Your_Name".
+Within that project, create two classes:
+Card, which contains data fields for RANK and SUIT
+Deck, which contains a collection of Card objects
+Create a "main.cpp" file to act as your test harness.
+In the "deck" class constructor, instantiate 52 cards and store them.
+Add a method called "getRandomCard()" to the "deck" class which returns a random card from the deck.
+Create a "card" class constructor that takes in 2 fields, "rank" and "suit", and stores them in the card.
+Use your "main.cpp" file to create a new deck full of cards and retrieve several cards, printing their value to the console.
+Deliverable
+Use the dropbox link below to upload your main.cpp, deck.cpp, deck.h, card.cpp, and card.h files.
+
+
+
+
+Homework 1: Pointers
+For homework, please follow the instructions below (we did most of this in-class) with the following modifications:
+Add all 5 ships in the game "battleship"
+Find a way to improve the algorithm so that we don't have to search through each cell in each ship to determine if a ship was hit (hint: use pointer arithmetic and the sizeOf operator)  
+See the bottom for submission instructions
+Introduction:
+One of the more interesting uses of pointers is in games.  Tile-based games are top-down type games that use "tiles" in an X / Y grid to determine the map of a game.
+In this lab, we'll create a "battleship" game.  The game board is on an x/y grid (with x and y stored in an array).  You'll then "position" your battleship at a certain memory address, which will be stored as an boolean pointer.  When the user enters a position, you'll check the addresses stored for your battleship to see if the address of the cell they entered matches.  If it does, he game will say "hit" and register that address as a hit.  If it doesn't, the game will say "miss" and register the move as a miss.
+Directions:
+Create an array to represent the "tiles" of the game board.  The tiles of the game board will be a boolean array representing initialized to "false".
+Create an array of boolean pointers for each ship.  The pointers contain an address for part of the ship, so an array of these pointers represents the entire length of the ship.
+When the user enters an x/y coordinate, get the address of that cell from the tile map (hint: using &tileMap[0][5] will do the trick) and compare it to the addresses in your ship.  If the ship is storing one of those addresses, you have a hit.  Otherwise, you have a miss.
+If the user has hit it, cout "hit" and increment a hit counter.
+When the user has registered 5 hits, the game ends with a win.
+BONUS: Keep track of the addresses the user has tried and, if he / she enters an existing address, cout "Already tried that - try again" instead of registering a hit.
+Template:
+#include <iostream>
+
+using namespace std;
+
+int main() {
+   // The 2 dimensional array represents [x, y] coordinate pairs
+   bool tileMap[20][20];
+   bool* battleShip[5];
+   int hitCounter = 0;
+
+   // Each piece of the battleship occupies one cell of the grid.
+   // Store the memory address of the cell the battleship occupies in the battleship. 
+   battleShip[0] = &tileMap[5][5]; 
+   battleShip[1] = &tileMap[5][6];
+   battleShip[2] = &tileMap[5][7];
+   battleShip[3] = &tileMap[5][8];
+   battleShip[4] = &tileMap[5][9];
+
+   bool done = false;
+   // Use a sentinel-based loop to determine when the game should end.
+   while (!done) {
+     cout << "Enter X and Y coordinates to play: ";
+     int x, y;
+     cin >> x >> y;
+     /* TODO: 
+      * 1. Get the memory address of the in the tileMap at the coordinates the user entered.
+      * 2. Compare the memory address retrieved to the address stored in each part of the battleship.
+      * 3. If the memory address of the cell does NOT match any of the battleship parts, output "miss" to the console.
+      * 4. If the memory address of the cell DOES match any of the battleship parts, output "hit" to the console.
+      * 5. When 5 hits have been registered, end the game by changing the sentinel value to "true"
+      */
+  }
+}
+
+
+
+
+
+Homework 2: Classes
+Introduction:
+In the United States, the banking system is governed by a set of "Code of Federal Regulations" section 12.
+Specifically, 12 C.F.R 204, Regulation D, "limits certain types of withdrawals and transfers made from a savings . . . account to a combined total of six (6) per account cycle".
+In this lab we're going to bank on it by creating a bank with two different types of bank accounts available.
+Each type of account has the following information:
+A first and last name for the account holder.
+A routing number for the bank.
+An account number.
+A balance amount.
+A transaction history.
+Methods for withdrawing money, depositing money, checking the account balance, and checking the transaction history.
+The first type of Account, a "Savings Account", will inherit from "Account" and introduce the following features:
+Maintain a count of the number of withdrawls and, if it exceeds 6, reject the withdrawl.
+Not allow overdraft - if the withdrawl amount exceeds the account balance, reject the transaction.
+The second type of Account, a "Checking Account", will inherit from "Account" and introduce the following features:
+If the user attempts to withdraw more than they have available in their account, apply an overdraft fee of $35.
+Allow total overdraft of up to $500 (including fees).
+If the account withdrawl + fees will make the user more than $500 overdrafted then reject the transaction.

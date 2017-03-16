@@ -1,0 +1,13 @@
+﻿Build started 3/7/2017 8:42:52 PM.
+     1>Project "C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\HW_2_Abdul\HW_2_Abdul\HW_2_Abdul.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\abdul-hakim\desktop\all\college\spring-17\cis-17c\vs_code\hw_2_abdul\hw_2_abdul\main.cpp(119): error C3861: 'clrscr': identifier not found
+     1>c:\users\abdul-hakim\desktop\all\college\spring-17\cis-17c\vs_code\hw_2_abdul\hw_2_abdul\main.cpp(134): error C3861: 'clrscr': identifier not found
+     1>c:\users\abdul-hakim\desktop\all\college\spring-17\cis-17c\vs_code\hw_2_abdul\hw_2_abdul\main.cpp(198): error C2059: syntax error: '}'
+     1>Done Building Project "C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\HW_2_Abdul\HW_2_Abdul\HW_2_Abdul.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.85

@@ -1,0 +1,19 @@
+﻿Build started 3/6/2017 4:07:16 PM.
+     1>Project "C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\Project1\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt card.cpp deck.cpp main.cpp
+         main.cpp
+     1>c:\users\abdul-hakim\desktop\all\college\spring-17\cis-17c\vs_code\project1\project1\main.cpp(16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+         deck.cpp
+         card.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\Project1\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\Project1\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\Project1\Debug\Project1.lib" /MACHINE:X86 Debug\card.obj
+         Debug\deck.obj
+         Debug\main.obj
+         Project1.vcxproj -> C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\Project1\Debug\Project1.exe
+     1>Done Building Project "C:\Users\Abdul-Hakim\Desktop\All\College\Spring-17\CIS-17C\VS_Code\Project1\Project1\Project1.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:10.66
